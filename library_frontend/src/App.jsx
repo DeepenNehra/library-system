@@ -50,20 +50,20 @@ const InventoryPage = ({ books, fetchData }) => {
   const handleAddBook = (e) => {
     e.preventDefault()
     if(!title || !author) return alert("Fill all fields")
-    axios.post('http://127.0.0.1:8000/api/books/', { title, author, is_borrowed: false })
+    axios.post('https://deepen.pythonanywhere.com/api/books/', { title, author, is_borrowed: false })
       .then(() => { fetchData(); setTitle(""); setAuthor("") })
   }
 
   const handleCheckout = (bookId) => {
     const borrower = prompt("Enter Borrower Name:")
     if (borrower) {
-      axios.post(`http://127.0.0.1:8000/api/books/${bookId}/checkout/`, { borrower_name: borrower })
+      axios.post(`https://deepen.pythonanywhere.com/api/books/${bookId}/checkout/`, { borrower_name: borrower })
       .then(() => fetchData())
     }
   }
 
   const handleReturn = (bookId) => {
-    axios.post(`http://127.0.0.1:8000/api/books/${bookId}/return_book/`)
+    axios.post(`https://deepen.pythonanywhere.com/api/books/${bookId}/return_book/`)
     .then(() => fetchData())
   }
 
@@ -247,8 +247,8 @@ function App() {
   const [records, setRecords] = useState([])
 
   const fetchData = () => {
-    axios.get('http://127.0.0.1:8000/api/books/').then(res => setBooks(res.data)).catch(err => console.error(err))
-    axios.get('http://127.0.0.1:8000/api/records/').then(res => {
+    axios.get('https://deepen.pythonanywhere.com/api/books/').then(res => setBooks(res.data)).catch(err => console.error(err))
+    axios.get('https://deepen.pythonanywhere.com/api/records/').then(res => {
         const sorted = res.data.sort((a, b) => Number(a.is_returned) - Number(b.is_returned));
         setRecords(sorted)
     }).catch(err => console.error(err))

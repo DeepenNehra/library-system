@@ -13,12 +13,12 @@ class Book(models.Model):
 
 # Table 2: BorrowRecord (Sir ka manga hua Dashboard Data)
 class BorrowRecord(models.Model):
-    book = models.ForeignKey(Book, on_delete=models.CASCADE) # Kaunsi kitab?
-    borrower_name = models.CharField(max_length=100)         # Kisne li?
-    borrow_date = models.DateField(auto_now_add=True)        # Aaj ki date
-    due_date = models.DateField(blank=True, null=True)       # 7 din baad ki date
-    is_returned = models.BooleanField(default=False)         # Wapas aayi ya nahi?
-
+    book = models.ForeignKey(Book, on_delete=models.CASCADE) 
+    borrower_name = models.CharField(max_length=100)         
+    borrow_date = models.DateField(auto_now_add=True)        
+    due_date = models.DateField(blank=True, null=True)       
+    is_returned = models.BooleanField(default=False)
+   
     # Save karte waqt apne aap 7 din jod do
     def save(self, *args, **kwargs):
         if not self.due_date:
