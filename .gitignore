@@ -1,0 +1,17 @@
+# --- Python & Django ---
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# --- React & Node ---
+library_frontend/node_modules/
+library_frontend/dist/
+library_frontend/build/
+npm-debug.log
+
+# --- Database (Important Decision) ---
+# Professional projects mein hum db.sqlite3 ko ignore karte hain.
+# LEKIN, kyunki tum PythonAnywhere par apna "Harry Potter" wala data
+# saath le jana chahte ho, isliye main ise abhi ignore NAHI kar raha hoon.
+# db.sqlite3  <-- Maine isey comment kar diya hai taaki database upload ho jaye.
